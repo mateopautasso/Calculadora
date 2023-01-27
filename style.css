@@ -185,6 +185,6 @@ button:active::before {
 @media screen and (max-width: 768px) {
     .calc-container {
         width: 97vw;
-        height: 95vh;
+        height: 90vh;
     }
 }
