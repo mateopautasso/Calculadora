@@ -182,7 +182,7 @@ button:active::before {
     background-color: var(--orage);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 428px) {
     .calc-container {
         width: 97vw;
         height: 90vh;
