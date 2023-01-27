@@ -1,0 +1,190 @@
+:root {
+    --grey: rgb(59, 59, 59);
+    --grey-3d: rgb(43, 43, 43);
+    --grey-active: #737373;
+    --grey-soft: #a5a5a5;
+    --grey-soft-3d: #808080;
+    --grey-soft-active: #d9d9d9;
+    --orage: #ff9f0a;
+    --orage-3d: #b97308;
+    --orange-active: #fbc78d;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-container {
+    box-shadow: 0px 10px 2px 0px var(--grey);
+    border-top: 1px solid var(--grey);
+    border-left: 2px solid var(--grey);
+    border-right: 2px solid var(--grey);
+    border-bottom: 2px solid var(--grey);
+    z-index: 0;
+    border-radius: 20px;
+    padding: 20px;
+    width: 400px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+    "a a a a" 
+    "b c d e"
+    "f g h i"
+    "j k l m"
+    "n o p q"
+    "r r s t";
+    grid-auto-flow: row;
+    gap: 20px;
+}
+
+button {
+    position: relative;
+    font-size: 24px;
+    background-color: var(--grey);
+    cursor: pointer;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid black;
+}
+button:active {
+    transform: translateY(5px);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    transform: translateY(6px);
+}
+button:not(.cero):before {
+    border-radius: 50%;
+}
+.cero::before {
+    border-radius: 44px;
+}
+button:active::before {
+    transform: translateY(0px);
+}
+
+.grey::before {
+    background-color: var(--grey-3d);
+}
+.greysoft::before {
+    background-color: var(--grey-soft-3d);
+}
+.orange::before {
+    background-color: var(--orage-3d);
+}
+
+.resultado-container {
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    grid-area: a;
+    background-color: transparent;
+    color: white;
+    text-align: end;
+}
+.resultadoActual {
+    overflow: hidden;
+    max-width: 100%;
+    margin-right: 16px;
+    font-size: 40px;
+}
+.resultadoAnterior {
+    margin-right: 16px;
+}
+
+.clear {
+    grid-area: b;
+    background-color: var(--grey-soft);
+}
+.neg {
+    grid-area: c;
+    background-color: var(--grey-soft);
+}
+.porcentaje {
+    grid-area: d;
+    background-color: var(--grey-soft);
+}
+.dividir {
+    grid-area: e;
+    background-color: var(--orage);
+}
+.siete {
+    grid-area: f;
+}
+.ocho {
+    grid-area: g;
+}
+.nueve {
+    grid-area: h;
+}
+.multiplicar {
+    grid-area: i;
+    background-color: var(--orage);
+}
+.cuatro {
+    grid-area: j;
+}
+.cinco {
+    grid-area: k;
+}
+.seis {
+    grid-area: l;
+}
+.restar {
+    grid-area: m;
+    background-color: var(--orage);
+}
+.uno {
+    grid-area: n;
+}
+.dos {
+    grid-area: o;
+}
+.tres {
+    grid-area: p;
+}
+.sumar {
+    grid-area: q;
+    background-color: var(--orage);
+}
+.cero {
+    grid-area: r;
+    border-radius: 44px;
+}
+.coma {
+    grid-area: s;
+}
+.igual {
+    grid-area: t;
+    background-color: var(--orage);
+}
+
+@media screen and (max-width: 768px) {
+    .calc-container {
+        width: 300px;
+        height: 480px;
+    }
+}
