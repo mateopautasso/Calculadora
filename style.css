@@ -48,10 +48,11 @@ main {
     "n o p q"
     "r r s t";
     grid-auto-flow: row;
-    gap: 20px;
+    gap: 10px;
 }
 
 button {
+    --translate-var: translateY(0px);
     position: relative;
     font-size: 24px;
     background-color: var(--grey);
@@ -62,6 +63,15 @@ button {
 }
 button:active {
     transform: translateY(5px);
+}
+button:active::before {
+    transform: translateY(0px);
+}
+.active {
+    transform: translateY(5px);
+}
+.active::before {
+    transform: translateY(0px);
 }
 
 button::before {
@@ -80,9 +90,7 @@ button:not(.cero):before {
 .cero::before {
     border-radius: 44px;
 }
-button:active::before {
-    transform: translateY(0px);
-}
+
 
 .grey::before {
     background-color: var(--grey-3d);
@@ -185,6 +193,6 @@ button:active::before {
 @media screen and (max-width: 428px) {
     .calc-container {
         width: 97vw;
-        height: 90vh;
+        height: 85vh;
     }
 }

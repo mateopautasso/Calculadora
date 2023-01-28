@@ -79,7 +79,7 @@ function porcentaje() {
 }
 
 neg.addEventListener ('click', ()=>{
-    let num = parseInt(resActual.innerHTML)
+    let num = parseFloat(resActual.innerHTML)
     let numneg = num - (num*2)
     resActual.innerHTML = numneg
 })
