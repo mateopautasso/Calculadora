@@ -52,7 +52,6 @@ main {
 }
 
 button {
-    --translate-var: translateY(0px);
     position: relative;
     font-size: 24px;
     background-color: var(--grey);
