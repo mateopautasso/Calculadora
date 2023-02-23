@@ -32,7 +32,7 @@ main {
     border-radius: 20px;
     padding: 20px;
     width: 400px;
-    height: 600px;
+    height: 620px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
