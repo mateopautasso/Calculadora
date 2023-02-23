@@ -70,7 +70,6 @@ button {
     text-align: end;
 }
 .resultadoActual {
-    overflow: hidden;
     max-width: 100%;
     margin-right: 16px;
     font-size: 40px;
