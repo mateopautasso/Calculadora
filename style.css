@@ -5,8 +5,8 @@
     --grey-soft: #a5a5a5;
     --grey-soft-3d: #808080;
     --grey-soft-active: #d9d9d9;
-    --orage: #ff9f0a;
-    --orage-3d: #b97308;
+    --orange: #ff9f0a;
+    --orange-3d: #b97308;
     --orange-active: #fbc78d;
 }
 body {
@@ -53,53 +53,14 @@ main {
 
 button {
     position: relative;
-    font-size: 24px;
+    font-size: 28px;
     background-color: var(--grey);
     cursor: pointer;
     border-radius: 50%;
     color: white;
     border: 1px solid black;
 }
-button:active {
-    transform: translateY(5px);
-}
-button:active::before {
-    transform: translateY(0px);
-}
-.active {
-    transform: translateY(5px);
-}
-.active::before {
-    transform: translateY(0px);
-}
 
-button::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    top: 0px;
-    left: 0px;
-    transform: translateY(6px);
-}
-button:not(.cero):before {
-    border-radius: 50%;
-}
-.cero::before {
-    border-radius: 44px;
-}
-
-
-.grey::before {
-    background-color: var(--grey-3d);
-}
-.greysoft::before {
-    background-color: var(--grey-soft-3d);
-}
-.orange::before {
-    background-color: var(--orage-3d);
-}
 
 .resultado-container {
     min-height: 70px;
@@ -136,7 +97,7 @@ button:not(.cero):before {
 }
 .dividir {
     grid-area: e;
-    background-color: var(--orage);
+    background-color: var(--orange);
 }
 .siete {
     grid-area: f;
@@ -149,7 +110,7 @@ button:not(.cero):before {
 }
 .multiplicar {
     grid-area: i;
-    background-color: var(--orage);
+    background-color: var(--orange);
 }
 .cuatro {
     grid-area: j;
@@ -162,7 +123,7 @@ button:not(.cero):before {
 }
 .restar {
     grid-area: m;
-    background-color: var(--orage);
+    background-color: var(--orange);
 }
 .uno {
     grid-area: n;
@@ -175,7 +136,7 @@ button:not(.cero):before {
 }
 .sumar {
     grid-area: q;
-    background-color: var(--orage);
+    background-color: var(--orange);
 }
 .cero {
     grid-area: r;
@@ -186,8 +147,78 @@ button:not(.cero):before {
 }
 .igual {
     grid-area: t;
-    background-color: var(--orage);
+    background-color: var(--orange);
 }
+
+.operador:not(.porcentaje),
+.coma,
+.igual {
+    font-size: 30px;
+}
+
+.operador {
+    transition: all 0.5s;
+}
+.operadorPresionado {
+    background-color: white;
+    color: var(--orange);
+    transition: all 0.3s;
+}
+.porcentajePresionado {
+    background-color: var(--grey-soft-active);
+    transition: all 0.3s;
+}
+.btnGreyPresionado {
+    animation: btnGreyPresionado;
+    animation-duration: 0.2s;
+}
+.btnSoftGreyPresionado {
+    animation: btnSoftGreyPresionado;
+    animation-duration: 0.2s;
+}
+.btnOrangePresionado {
+    animation: btnOrangePresionado;
+    animation-duration: 0.2s;
+}
+
+
+@keyframes btnGreyPresionado {
+    0% {
+        background-color: var(--grey);
+    }
+    50% {
+        background-color: var(--grey-active);
+    }
+    100% {
+        background-color: var(--grey);
+    }
+}
+@keyframes btnSoftGreyPresionado {
+    0% {
+        background-color: var(--grey-soft);
+    }
+    50% {
+        background-color: var(--grey-soft-active);
+    }
+    100% {
+        background-color: var(--grey-soft);
+    }
+}
+@keyframes btnOrangePresionado {
+    0% {
+        background-color: var(--orange);
+    }
+    50% {
+        background-color: var(--orange-active);
+    }
+    100% {
+        background-color: var(--orange);
+    }
+}
+
+
+
+
 
 @media screen and (max-width: 428px) {
     .calc-container {
