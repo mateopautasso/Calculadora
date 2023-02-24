@@ -1,5 +1,6 @@
 let resAnterior = document.querySelector(".resultadoAnterior")
 let resActual = document.querySelector(".resultadoActual")
+const buttons = document.querySelectorAll("button")
 const clear = document.querySelector(".clear")
 const btnPorcentaje = document.querySelector('.porcentaje')
 const operadores = document.querySelectorAll('.operador')
@@ -42,6 +43,51 @@ function porcentaje() {
 let operacion;
 let resAnteriorRepeat = []
 
+function Igual() {
+    igual.classList.add('btnOrangePresionado')
+    setTimeout(()=>{
+        igual.classList.remove('btnOrangePresionado')
+    },200)
+
+    if(resAnterior.innerHTML !== '') {
+        resAnteriorRepeat.push(resActual.innerHTML)
+        console.log(resAnteriorRepeat)
+        if (resActual.innerHTML === '0') {
+            resActual.innerHTML = resAnteriorRepeat[0];
+        } 
+    }
+
+
+    if(operacion === '+') {
+        suma();
+    } else if(operacion === '-') {
+        resta()
+    } else if(operacion === 'x') {
+        multiplicacion()
+    } else if(operacion === '÷') {
+        division()
+    } else if(operacion === '%') {
+        porcentaje()
+    } else if(operacion === undefined && resAnterior.innerHTML === ''){
+        resAnterior.innerHTML = resActual.innerHTML;
+        resActual.innerHTML = '0'
+    }else if(operacion === undefined && resAnterior.innerHTML !== '') {
+        resAnterior.innerHTML = resAnterior.innerHTML;
+        resActual.innerHTML = '0'
+    }
+
+    operacion = operacion;
+}
+
+buttons.forEach((btn)=>{
+    btn.addEventListener('click', ()=>{
+        for(operador of operadores) {
+            operador.classList.remove('operadorPresionado')
+        }
+        btnPorcentaje.classList.remove('porcentajePresionado')
+    })
+})
+
 
 numeros.forEach((numero)=>{
     numero.addEventListener('click', (e)=>{
@@ -80,41 +126,47 @@ numeros.forEach((numero)=>{
 
 operadores.forEach((operador)=>{
     operador.addEventListener('click', (e)=>{
+        let operadorPresionado = e.target;
 
+        for(operador of operadores) {
+            operador.classList.remove('operadorPresionado')
+        }
+        
         if(resAnterior.innerHTML !== '' && resActual.innerHTML === '0') {
             resAnterior.innerHTML = resAnterior.innerHTML
-        }
-
-        if(resAnterior.innerHTML === '') {
-            resAnterior.innerHTML = resActual.innerHTML;
-            resActual.innerHTML = '0';
-        } else if(resAnterior.innerHTML !== '' && resActual.innerHTML === '0') {
-            resAnterior.innerHTML = resAnterior.innerHTML
         } 
-        else if(resAnterior.innerHTML !== ''){
+            else if(resAnterior.innerHTML === '' && resActual.innerHTML !== '0') {
             resAnterior.innerHTML = resActual.innerHTML;
             resActual.innerHTML = '0';
+        } 
+            else if(resAnterior.innerHTML !== '' && resActual.innerHTML !== '0'){
+            resAnterior.innerHTML = resAnterior.innerHTML;
+            resActual.innerHTML = resActual.innerHTML
         }
 
-        let operadorPresionado = e.target;
+
         if(operadorPresionado.innerHTML === '%') {
             operadorPresionado.classList.add('porcentajePresionado')
         } else {
             operadorPresionado.classList.add('operadorPresionado')
         }
 
-
-        if(operador.innerHTML === '+') {
+        if(operadorPresionado.innerHTML === '+') {
+            Igual()
             operacion = '+';
-        } else if (operador.innerHTML === '-') {
+        } else if (operadorPresionado.innerHTML === '-') {
+            Igual()
             operacion = '-';
-        } else if (operador.innerHTML === 'x') {
+        } else if (operadorPresionado.innerHTML === 'x') {
+            Igual()
             operacion = 'x';
-        } else if(operador.innerHTML === '÷') {
+        } else if(operadorPresionado.innerHTML === '÷') {
+            Igual()
             operacion = '÷';
-        } else if(operador.innerHTML === '%') {
+        } else if(operadorPresionado.innerHTML === '%') {
+            Igual()
             operacion = '%';
-        } else if(operador.innerHTML === '+/-') {
+        } else if(operadorPresionado.innerHTML === '+/-') {
             operacion = '+/-';
         }
     })
@@ -131,33 +183,6 @@ neg.addEventListener ('click', ()=>{
     resActual.innerHTML = numneg
 })
 
-igual.addEventListener('click', ()=>{
-
-    igual.classList.add('btnOrangePresionado')
-    setTimeout(()=>{
-        igual.classList.remove('btnOrangePresionado')
-    },200)
-
-    resAnteriorRepeat.push(resActual.innerHTML)
-    console.log(resAnteriorRepeat)
-    if(resActual.innerHTML === '0') {
-        resActual.innerHTML = resAnteriorRepeat[0];
-    } 
-
-    if(operacion === '+') {
-        suma();
-    } else if(operacion === '-') {
-        resta()
-    } else if(operacion === 'x') {
-        multiplicacion()
-    } else if(operacion === '÷') {
-        division()
-    } else if(operacion === '%') {
-        porcentaje()
-    }
-    operacion = operacion;
-})  
-
 clear.addEventListener('click', ()=>{
     clear.classList.add('btnSoftGreyPresionado')
     setTimeout(()=>{
@@ -165,6 +190,8 @@ clear.addEventListener('click', ()=>{
     },200)
     resActual.innerHTML = '0'
     resAnterior.innerHTML = ''
+    operacion = undefined;
+    resAnteriorRepeat.splice(0, resAnteriorRepeat.length)
 })
 
 coma.addEventListener('click', ()=>{
@@ -185,4 +212,7 @@ coma.addEventListener('click', ()=>{
         resActual.innerHTML = resActual.innerHTML
     }
 })
+
+igual.addEventListener('click', Igual)  
+
 
