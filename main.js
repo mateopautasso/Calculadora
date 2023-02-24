@@ -51,7 +51,6 @@ function Igual() {
 
     if(resAnterior.innerHTML !== '') {
         resAnteriorRepeat.push(resActual.innerHTML)
-        console.log(resAnteriorRepeat)
         if (resActual.innerHTML === '0') {
             resActual.innerHTML = resAnteriorRepeat[0];
         } 
@@ -152,20 +151,51 @@ operadores.forEach((operador)=>{
         }
 
         if(operadorPresionado.innerHTML === '+') {
-            Igual()
-            operacion = '+';
+            if(resAnterior.innerHTML !== '' && resActual.innerHTML === '0') {
+                resAnteriorRepeat.splice(0, resAnteriorRepeat.length)
+                console.log(resAnteriorRepeat)
+                operacion = '+';
+            } else {
+                Igual()
+                operacion = '+';
+            }
         } else if (operadorPresionado.innerHTML === '-') {
-            Igual()
-            operacion = '-';
+            if(resAnterior.innerHTML !== '' && resActual.innerHTML === '0') {
+                resAnteriorRepeat.splice(0, resAnteriorRepeat.length)
+                console.log(resAnteriorRepeat)
+                operacion = '-';
+            } else {
+                Igual()
+                operacion = '-';
+            }
         } else if (operadorPresionado.innerHTML === 'x') {
-            Igual()
-            operacion = 'x';
+            if(resAnterior.innerHTML !== '' && resActual.innerHTML === '0') {
+                resAnteriorRepeat.splice(0, resAnteriorRepeat.length)
+                console.log(resAnteriorRepeat)
+                operacion = 'x';
+            } else {
+                Igual()
+                operacion = 'x';
+            }
+
         } else if(operadorPresionado.innerHTML === '÷') {
-            Igual()
-            operacion = '÷';
+            if(resAnterior.innerHTML !== '' && resActual.innerHTML === '0') {
+                resAnteriorRepeat.splice(0, resAnteriorRepeat.length)
+                console.log(resAnteriorRepeat)
+                operacion = '÷';
+            } else {
+                Igual()
+                operacion = '÷';
+            }
         } else if(operadorPresionado.innerHTML === '%') {
-            Igual()
-            operacion = '%';
+            if(resAnterior.innerHTML !== '' && resActual.innerHTML === '0') {
+                resAnteriorRepeat.splice(0, resAnteriorRepeat.length)
+                console.log(resAnteriorRepeat)
+                operacion = '%';
+            } else {
+                Igual()
+                operacion = '%';
+            }
         } else if(operadorPresionado.innerHTML === '+/-') {
             operacion = '+/-';
         }
