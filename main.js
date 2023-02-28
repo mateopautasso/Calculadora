@@ -44,10 +44,6 @@ let operacion;
 let resAnteriorRepeat = []
 
 function Igual() {
-    igual.classList.add('btnOrangePresionado')
-    setTimeout(()=>{
-        igual.classList.remove('btnOrangePresionado')
-    },200)
 
     if(resAnterior.innerHTML !== '') {
         resAnteriorRepeat.push(resActual.innerHTML)
@@ -244,5 +240,11 @@ coma.addEventListener('click', ()=>{
 })
 
 igual.addEventListener('click', Igual)  
+igual.addEventListener('click', ()=>{
+    igual.classList.add('btnOrangePresionado')
+    setTimeout(()=>{
+        igual.classList.remove('btnOrangePresionado')
+    },200)
+})  
 
 
