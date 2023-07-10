@@ -10,7 +10,7 @@
     --orange-active: #fbc78d;
 }
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: black;
 }
 * {
@@ -24,6 +24,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .calc-container {
@@ -45,16 +46,19 @@ main {
     "r r s t";
     grid-auto-flow: row;
     gap: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 button {
     position: relative;
     font-size: 28px;
+    font-weight: 700;
     background-color: var(--grey);
     cursor: pointer;
     border-radius: 50%;
     color: white;
     border: 1px solid black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 
@@ -146,7 +150,9 @@ button {
     grid-area: t;
     background-color: var(--orange);
 }
-
+.greysoft {
+    color: black
+}
 .operador:not(.porcentaje),
 .coma,
 .igual {

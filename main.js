@@ -246,5 +246,3 @@ igual.addEventListener('click', ()=>{
         igual.classList.remove('btnOrangePresionado')
     },200)
 })  
-
-
